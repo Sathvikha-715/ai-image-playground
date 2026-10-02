@@ -19,3 +19,10 @@ class GenerateResponse(BaseModel):
     guidance_scale: float
     generation_time_s: float
     image_path: str
+class EnhanceRequest(BaseModel):
+    prompt: str = Field(..., min_length=1, max_length=300)
+
+
+class EnhanceResponse(BaseModel):
+    original: str
+    enhanced: str

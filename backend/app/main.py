@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.routes.generate import router as generate_router
-
+from app.routes.enhance import router as enhance_router
 app = FastAPI(title="AI Image Playground API")
 
 app.add_middleware(
@@ -13,7 +13,7 @@ app.add_middleware(
 )
 
 app.include_router(generate_router)
-
+app.include_router(enhance_router)
 
 @app.get("/")
 def root():
