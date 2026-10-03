@@ -13,12 +13,15 @@ class GenerateRequest(BaseModel):
 
 
 class GenerateResponse(BaseModel):
+    id: Optional[int] = None
     image_base64: str
     seed: int
     steps: int
     guidance_scale: float
     generation_time_s: float
     image_path: str
+
+
 class EnhanceRequest(BaseModel):
     prompt: str = Field(..., min_length=1, max_length=300)
 
