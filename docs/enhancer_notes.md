@@ -51,10 +51,11 @@ About 25 words in 11 phrases, with no repeated words, well inside the 77-token l
 - LLM output can contradict itself: "bustling crowds" and "serene atmosphere" pull in opposite directions.
 - Prompt length matters: keep prompts well under 77 tokens, because anything beyond that has no effect.
 - Relying on instructions alone is not enough, so I added a code-level cleanup step as a safety net.
-- My comparison of the two images (fill this in after looking at them):
-  - What changed:
-  - What is better:
-  - What is worse:
+- My comparison of the two images:
+  - What changed: the enhanced prompt changed the subject. The plain prompt produced a plane on the runway with a terminal behind it. The enhanced prompt produced a large terminal building with a crowd in the foreground and no plane.
+  - What is better: more of the added details appeared (crowds, glass facade, wide-angle view, modern architecture), and there was no garbled lettering on an aircraft.
+  - What is worse: the enhancer changed "airport" to "airport terminal", so the aircraft disappeared. It did not just add detail, it shifted what the image is about.
+  - Conclusion: an LLM enhancer can change the meaning of a prompt, not only improve it. The word "terminal" steered the whole scene. A good enhancer should keep the original keywords intact, which is worth testing next.
 
 ---
 
