@@ -25,6 +25,8 @@ def get_pipe():
         _pipe = StableDiffusionPipeline.from_pretrained(
             "stable-diffusion-v1-5/stable-diffusion-v1-5",
             torch_dtype=torch.float16,
+            low_cpu_mem_usage=False,
+            use_safetensors=True,
         ).to("cuda")
     return _pipe
 
@@ -32,8 +34,6 @@ def get_pipe():
 def generate_image(prompt, negative_prompt, steps, guidance_scale, seed, width, height):
     pipe = get_pipe()
     import torch
-
-    pipe = get_pipe()
 
     if seed is None:
         seed = random.randint(0, 2**32 - 1)
