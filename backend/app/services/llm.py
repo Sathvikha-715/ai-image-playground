@@ -15,7 +15,7 @@ SYSTEM_PROMPT = (
 
 
 def enhance_prompt(user_prompt: str) -> str:
-    api_key = os.getenv("GROQ_API_KEY")
+    api_key = ((os.getenv("GROQ_API_KEY") or "").split() or [""])[0]
     if not api_key:
         raise RuntimeError("GROQ_API_KEY is not set.")
 
