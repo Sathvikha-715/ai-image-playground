@@ -2,11 +2,40 @@ import { useState } from "react";
 
 const DEFAULT_NEGATIVE = "blurry, distorted, low quality";
 
+const STYLES = {
+  None: { suffix: "", negative: "" },
+  Realistic: {
+    suffix: "photorealistic, natural lighting, sharp focus",
+    negative: "cartoon, drawing, painting",
+  },
+  Cinematic: {
+    suffix: "cinematic lighting, dramatic composition, film still",
+    negative: "flat lighting",
+  },
+  Anime: {
+    suffix: "anime style, vibrant colors, clean line art",
+    negative: "photo, realistic, 3d render",
+  },
+  "3D Render": {
+    suffix: "3d render, octane render, soft studio lighting",
+    negative: "flat, sketch, photo",
+  },
+  Watercolor: {
+    suffix: "watercolor painting, soft washes, paper texture",
+    negative: "photo, sharp edges, 3d render",
+  },
+  "Digital Art": {
+    suffix: "digital art, detailed illustration, concept art",
+    negative: "photo, blurry",
+  },
+};
+
 export default function App() {
   const [view, setView] = useState("create");
   const [apiUrl, setApiUrl] = useState(localStorage.getItem("apiUrl") || "");
   const [prompt, setPrompt] = useState("");
   const [originalPrompt, setOriginalPrompt] = useState("");
+  const [style, setStyle] = useState("None");
   const [negative, setNegative] = useState(DEFAULT_NEGATIVE);
   const [steps, setSteps] = useState(30);
   const [guidance, setGuidance] = useState(7.5);
@@ -63,9 +92,13 @@ export default function App() {
     setLoading(true);
     setError("");
 
+    const preset = STYLES[style];
+    const finalPrompt = preset.suffix ? `${prompt}, ${preset.suffix}` : prompt;
+    const finalNegative = preset.negative ? `${negative}, ${preset.negative}` : negative;
+
     const body = {
-      prompt,
-      negative_prompt: negative,
+      prompt: finalPrompt,
+      negative_prompt: finalNegative,
       steps: Number(steps),
       guidance_scale: Number(guidance),
       seed: seedToUse,
@@ -121,6 +154,7 @@ export default function App() {
   function reuseSettings(item) {
     setPrompt(item.prompt);
     setOriginalPrompt("");
+    setStyle("None");
     setNegative(item.negative_prompt || DEFAULT_NEGATIVE);
     setSteps(item.steps);
     setGuidance(item.guidance_scale);
@@ -137,6 +171,7 @@ export default function App() {
   function handleClear() {
     setPrompt("");
     setOriginalPrompt("");
+    setStyle("None");
     setNegative(DEFAULT_NEGATIVE);
     setSteps(30);
     setGuidance(7.5);
@@ -209,6 +244,21 @@ export default function App() {
                   </button>
                 )}
               </div>
+            </div>
+
+            <div>
+              <label className="mb-1 block text-sm text-slate-400">Style</label>
+              <select
+                className="w-full rounded-lg border border-slate-700 bg-slate-900 p-2"
+                value={style}
+                onChange={(e) => setStyle(e.target.value)}
+              >
+                {Object.keys(STYLES).map((name) => (
+                  <option key={name} value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>

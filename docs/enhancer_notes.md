@@ -64,3 +64,39 @@ About 25 words in 11 phrases, with no repeated words, well inside the 77-token l
 - One prompt and one seed were tested, so this is a small sample, not a statistical result.
 - Image quality was judged visually, with no automated metric (such as CLIP similarity).
 - Stable Diffusion v1.5 often produces garbled text on signs and aircraft.
+---
+
+## Style presets
+
+Each preset adds style words to the end of the prompt and sometimes extra words to the negative prompt. Nothing else changes.
+
+**Setup:** prompt `a robot cooking in a kitchen`, seed `12345`, 30 steps, guidance 7.5. Only the style was changed between runs.
+
+| Style | Words added to the prompt | Image |
+|---|---|---|
+| None | (nothing) | ![None](images/robot_none.png) |
+| Anime | anime style, vibrant colors, clean line art | ![Anime](images/robot_anime.png) |
+| Watercolor | watercolor painting, soft washes, paper texture | ![Watercolor](images/robot_watercolor.png) |
+| 3D Render | 3d render, octane render, soft studio lighting | ![3D Render](images/robot_3d.png) |
+
+**Observation:** each preset produced a visibly different texture that matched the chosen style, and the style was clear in every image.
+
+**Takeaway:** a "style" is just extra prompt text that steers the model toward a look. There is no separate style model.
+---
+
+## Style presets
+
+Each preset adds style words to the end of the prompt and sometimes extra words to the negative prompt. Nothing else changes.
+
+**Setup:** prompt `a robot cooking in a kitchen`, seed `12345`, 30 steps, guidance 7.5. Only the style was changed between runs.
+
+| Style | Words added to the prompt | Image |
+|---|---|---|
+| None | (nothing) | ![None](images/robot_none.png) |
+| Anime | anime style, vibrant colors, clean line art | ![Anime](images/robot_anime.png) |
+| Watercolor | watercolor painting, soft washes, paper texture | ![Watercolor](images/robot_watercolor.png) |
+| 3D Render | 3d render, octane render, soft studio lighting | ![3D Render](images/robot_3d.png) |
+
+**Observation:** each preset produced a visibly different texture that matched the chosen style, and the style was clear in every image.
+
+**Takeaway:** a "style" is just extra prompt text that steers the model toward a look. There is no separate style model.
