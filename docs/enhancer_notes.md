@@ -100,3 +100,21 @@ Each preset adds style words to the end of the prompt and sometimes extra words 
 **Observation:** each preset produced a visibly different texture that matched the chosen style, and the style was clear in every image.
 
 **Takeaway:** a "style" is just extra prompt text that steers the model toward a look. There is no separate style model.
+---
+
+## Vague prompt test: "dog with sunglasses"
+
+**Setup:** seed 12345, 30 steps, guidance 7.5, generated side by side in the Compare tab. Only the prompt differs.
+
+| Plain | Enhanced |
+|---|---|
+| ![Plain](images/sunglass_plain.png) | ![Enhanced](images/sunglass_enhanced.png) |
+
+**Plain prompt:** `dog with sunglasses`
+
+**Enhanced prompt:** golden retriever wearing black aviator sunglasses, sunny park, bright midday light, playful grin, eye-level shot, vibrant atmosphere, candid portrait, natural color
+
+**Observation:**
+- What changed: The clarity of the image and due to enhancement prompt showed that it was bright so it mainatained a dog with bright features like- golden retreiver
+- Did the enhanced version keep the subject (dog and sunglasses)? Yes 
+- Is it better? yes the clarity improved and breed was specific

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Compare from "./Compare.jsx";
 
 const DEFAULT_NEGATIVE = "blurry, distorted, low quality";
 
@@ -198,10 +199,15 @@ export default function App() {
           <button className={tabClass("history")} onClick={openHistory}>
             History
           </button>
+          <button className={tabClass("compare")} onClick={() => setView("compare")}>
+            Compare
+          </button>
         </div>
       </nav>
 
-      {view === "create" ? (
+      {view === "compare" ? (
+        <Compare baseUrl={baseUrl()} />
+      ) : view === "create" ? (
         <main className="mx-auto grid max-w-6xl gap-8 p-6 md:grid-cols-2">
           {/* LEFT: controls */}
           <section className="space-y-5">
